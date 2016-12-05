@@ -12,6 +12,7 @@ import com.user.service.UserService;
 import com.user.vo.User;
 
 import java.util.List;
+import java.util.concurrent.RunnableFuture;
 
 @Controller
 @RequestMapping("/user/")
@@ -24,9 +25,6 @@ public class UserController {
 	public ModelAndView getUserByUsername(@RequestParam String username){
 		
 		ModelAndView mav = new ModelAndView("user/userInfo");
-		
-		System.out.println("正在获取用户："+username+"的信息...");
-		
 		User user = userService.getUserByUsername(username);
 		mav.addObject("user", user);
 		
@@ -37,9 +35,7 @@ public class UserController {
 	//@RequiresRoles("admin")
 	public ModelAndView getUserList(){
 
-		ModelAndView mav = new ModelAndView("/user/list");
-		System.out.println("正在获取用户列表的信息...");
-
+		ModelAndView mav = new ModelAndView("user/list");
 		List userList = userService.getUserList();
 		mav.addObject(userList);
 
@@ -47,7 +43,17 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "add")
-	public String add(){
+	public String add(User user){
+//		new Thread(){
+//				public void run(){
+//					try {
+//						Thread.sleep(1000);
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
+//				}
+//			}.start();
+        userService.add(user);
 		return "user/add";
 	}
 

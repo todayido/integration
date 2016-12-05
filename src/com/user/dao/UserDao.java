@@ -16,4 +16,6 @@ public interface UserDao {
     Set getRolePermissionsSet(String role_name);
 
     User getUserAnthenticaition(Map map);
+
+    void addUser(User user);
 }

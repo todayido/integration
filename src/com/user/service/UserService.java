@@ -19,4 +19,6 @@ public interface UserService {
 	Set getRolePermissionsSet(String role_name);
 
 	User getUserAnthenticaition(String username, String password);
+
+    void add(User user);
 }

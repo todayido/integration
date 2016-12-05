@@ -46,4 +46,9 @@ public class UserServiceImpl implements UserService{
 		return userDao.getUserAnthenticaition(map);
 	}
 
+	@Override
+	public void add(User user) {
+		userDao.addUser(user);
+	}
+
 }
