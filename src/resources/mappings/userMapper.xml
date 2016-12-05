@@ -27,6 +27,7 @@
                              WHERE c.username=#{username})
     </select>
 
+    <!-- 获取用户权限集合 -->
     <select id="getRolePermissionsSet" parameterType="string" resultType="string">
         SELECT a.permission_name
           FROM t_permission a
@@ -38,7 +39,12 @@
                   WHERE c.role_name =#{role_name})
     </select>
 
+    <!-- 根据用户名和密码获取用户的用户名和密码，判断用户命和密码的正确性 -->
     <select id="getUserAnthenticaition" parameterType="map" resultMap="user">
         SELECT username, password FROM t_user WHERE username=#{username} AND  password=#{password}
     </select>
+
+    <insert id="addUser" parameterType="com.user.vo.User">
+        INSERT INTO t_user (id, username, password) VALUES (#{id},#{username},#{password})
+    </insert>
 </mapper>
