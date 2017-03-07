@@ -5,7 +5,7 @@ import org.apache.shiro.crypto.hash.Md5Hash;
 /**
  * Created by Administrator on 2016/9/28.
  */
-public class MyCredentialsMatcher {
+public class CredentialsMatcher {
 
     //data加密密方法
     public String encrypt(String data) {
